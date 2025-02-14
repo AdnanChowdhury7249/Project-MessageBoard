@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Message</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <h1>Add a new Message</h1>
+  <div class="formContainer">
+    <form action="/new" method="post">
+      <div class="formGroup">
+        <label for="user">Your Name:</label>
+        <input type="text" id="user" name="user" required>
+      </div>
+
+      <div class="formGroup">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button class="sendMessageBtn" type="submit">Send</button>
+    </form>
+    <button class="bkToIndexbtn">
+      <a href="/">Go back</a>
+    </button>
+  </div>
+
+
+</body>
+
+</html>

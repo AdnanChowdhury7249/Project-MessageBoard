@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messaging Board</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <h1>Messaging Board</h1>
+  <div class="container">
+    <ul>
+      <% messages.forEach(message=> { %>
+        <li>
+          <strong>
+            <%= message.user %>
+          </strong>: <%= message.text %> <br>
+            <small>
+              <%= message.added.toDateString() %>
+            </small> <br>
+            <a href="/detail/<%= message.id %>">
+              <button>Details</button>
+            </a>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+  <a href="/new">
+    <button class="gtoMessageBtn">Add a message</button>
+  </a>
+
+</body>
+
+</html>
