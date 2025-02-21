@@ -1,4 +1,6 @@
 const express = require('express');
+const messageController = require('../controllers/messageControllers'); // ✅ Now matches the file name
+
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const messages = require('../db');
@@ -7,17 +9,7 @@ router.get('/new', (req, res) => {
   res.render('form');
 });
 
-router.post('/new', (req, res) => {
-  const newMessage = {
-    id: uuidv4(),
-    text: req.body.message,
-    user: req.body.user,
-    added: new Date(),
-  };
-
-  messages.push(newMessage);
-  res.redirect('/');
-});
+router.post('/new', messageController.newMessagePost);
 
 router.get('/detail/:id', (req, res) => {
   const messageId = req.params.id;

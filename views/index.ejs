@@ -15,10 +15,10 @@
       <% messages.forEach(message=> { %>
         <li>
           <strong>
-            <%= message.user %>
-          </strong>: <%= message.text %> <br>
+            <%= message.username %>
+          </strong>: <%= message.message %> <br>
             <small>
-              <%= message.added.toDateString() %>
+              <%= new Date(message.date_added).toDateString() %>
             </small> <br>
             <a href="/detail/<%= message.id %>">
               <button>Details</button>
