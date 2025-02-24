@@ -23,6 +23,9 @@
             <a href="/detail/<%= message.id %>">
               <button>Details</button>
             </a>
+            <a href="/delete/<%= message.id %>" onclick="return confirm('Are you sure?');">
+              <button>Delete</button>
+            </a>
         </li>
         <% }); %>
     </ul>

@@ -19,4 +19,25 @@ async function AllMessages() {
   const { rows } = await pool.query('SELECT * FROM messages');
   return rows;
 }
-module.exports = { postMessage, AllMessages };
+
+async function getMessageById(id) {
+  const { rows } = await pool.query('SELECT * FROM messages WHERE id = $1', [id]);
+
+  if (rows.length === 0) {
+    return null;
+  }
+
+  return rows[0];
+}
+
+async function getDeleteMessage(id) {
+  const { rowCount } = await pool.query('delete FROM messages WHERE id = $1', [id]);
+  if (rowCount === 0) {
+    return null;
+  }
+  return 'message successfully deleted';
+}
+
+module.exports = {
+  postMessage, AllMessages, getMessageById, getDeleteMessage,
+};

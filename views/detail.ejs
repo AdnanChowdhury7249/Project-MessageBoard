@@ -12,13 +12,13 @@
   <h1>Message Details</h1>
   <div class="detailContainer">
     <p><strong>User:</strong>
-      <%= message.user %>
+      <%= message.username %>
     </p>
     <p><strong>Message:</strong>
-      <%= message.text %>
+      <%= message.message %>
     </p>
-    <p><strong>Added on:</strong>
-      <%= message.added.toDateString() %>
+    <p><strong>Date Added:</strong>
+      <%=message.date_added ? new Date(message.date_added).toDateString() : "No date available" %>
     </p>
 
     <a href="/"><button class="backToMessagesBtn">Back to Messages</button></a>

@@ -29,4 +29,36 @@ async function getAllMessages(req, res) {
   }
 }
 
-module.exports = { newMessagePost, getAllMessages };
+async function getMessageById(req, res) {
+  const messageId = req.params.id;
+
+  try {
+    const message = await db.getMessageById(messageId);
+
+    if (!message) {
+      return res.status(404).send('Message not found');
+    }
+    return res.render('detail', { message });
+  } catch (error) {
+    console.error('error fetching message', error);
+    return res.status(500).send('interal server error');
+  }
+}
+
+async function deleteMessage(req, res) {
+  const messageId = req.params.id;
+  try {
+    const deleted = await db.getDeleteMessage(messageId);
+    if (!deleted) {
+      return res.status(404).send('Message not found');
+    }
+    return res.redirect('/');
+  } catch (error) {
+    console.error('error deleting message');
+    return res.status(500).send('internal server error');
+  }
+}
+
+module.exports = {
+  newMessagePost, getAllMessages, getMessageById, deleteMessage,
+};
